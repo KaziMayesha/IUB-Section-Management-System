@@ -297,7 +297,6 @@ $dataPoints2 = array(
                                                 <td><?php echo $total['sectionCount']; ?></td>
                                                 <td><?php   echo $class_size7;$a=array("label"=>"21-30", "y"=>$class_size7);array_push($dataPoints,$a); ?></td>
                                                 <td><?php   echo $class_size8;$a=array("label"=>"21-30", "y"=>$class_size8);array_push($dataPoints2,$a); ?></td>
-
                                             </tr>
                                             <tr>
                                               <?php
