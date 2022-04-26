@@ -91,15 +91,6 @@ if(isset($_GET['semester_6']))
 
 
 $dbconnect = $connection->getConnection();
-if ($dbconnect)
-{
-
-}
-else
-  {
-
-  }
-
 
 ?>
 <?php

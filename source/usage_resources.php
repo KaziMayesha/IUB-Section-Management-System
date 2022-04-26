@@ -73,15 +73,6 @@ if(isset($_GET['semester_6']))
 
 
 $dbconnect = $connection->getConnection();
-if ($dbconnect)
-{
-
-}
-else
-  {
-
-  }
-
 
 ?>
 <?php
@@ -244,8 +235,6 @@ $dataPoints3 = array(
                                             <th>Difference</th>
                                             <th>Unused</th>
 
-
-
                                         </thead>
                                         <tbody>
                                             <tr>
@@ -354,9 +343,6 @@ $dataPoints3 = array(
                                                {
                                                 $difference=$difference.";";
                                                }
-
-
-
                                                $Enrolled1 = $dbconnect->query($totalEnrolled_SELS);
                                                $Enrolled1_avg = $dbconnect->query($totalEnrolled_avg);
                                                $Enrolled1_avg_room=$dbconnect->query($total_avg_room);
@@ -365,7 +351,7 @@ $dataPoints3 = array(
                                                $total=$Enrolled1->fetch_array();
                                                $total_avg=$Enrolled1_avg->fetch_array();
                                                $total_avg_room=$Enrolled1_avg_room->fetch_array();
-                                              $difference=$Enrolled1_difference->fetch_array();
+                                               $difference=$Enrolled1_difference->fetch_array();
 
 
                                               ?>
