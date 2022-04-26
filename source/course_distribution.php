@@ -3,6 +3,73 @@ require_once('connection.php');
 $connection = new Connection();
 $sum=0;
 $sum2=0;
+$semester_ids="";
+if(isset($_GET['semester_1']))
+{
+  if($semester_ids=="")
+  {
+    $semester_ids="1";
+  }
+  else
+  {
+    $semester_ids=$semester_ids.",1";
+  }
+}
+if(isset($_GET['semester_2']))
+{
+  if($semester_ids=="")
+  {
+    $semester_ids="2";
+  }
+  else
+  {
+    $semester_ids=$semester_ids.",2";
+  }
+}
+if(isset($_GET['semester_3']))
+{
+  if($semester_ids=="")
+  {
+    $semester_ids="3";
+  }
+  else
+  {
+    $semester_ids=$semester_ids.",3";
+  }
+}
+if(isset($_GET['semester_4']))
+{
+  if($semester_ids=="")
+  {
+    $semester_ids="4";
+  }
+  else
+  {
+    $semester_ids=$semester_ids.",4";
+  }
+}
+if(isset($_GET['semester_5']))
+{
+  if($semester_ids=="")
+  {
+    $semester_ids="5";
+  }
+  else
+  {
+    $semester_ids=$semester_ids.",5";
+  }
+}
+if(isset($_GET['semester_6']))
+{
+  if($semester_ids=="")
+  {
+    $semester_ids="6";
+  }
+  else
+  {
+    $semester_ids=$semester_ids.",6";
+  }
+}
 $dbconnect = $connection->getConnection();
 if ($dbconnect)
 {
@@ -15,6 +82,7 @@ else
 
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -118,6 +186,33 @@ else
                         <div class="col-md-12">
                             <div class="card strpied-tabled-with-hover">
                                 <div class="card-header ">
+                                  <form  action="./course_distribution.php">
+                                    <div class="d-flex flex-row">
+                                      <?php
+                                      $classroom_info = "SELECT * FROM semester;";
+                                      $countArray= $dbconnect->query($classroom_info);
+                                      if($countArray->num_rows>0)
+                                      {
+                                        while($row=$countArray->fetch_assoc())
+                                        {
+                                          ?>
+
+
+                                            <div class="p-2"><input type="checkbox" name=<?php echo "semester_".$row['id'] ?> value=<?php echo $row['id'] ?> <?php if(isset($_GET['semester_'.$row['id']])) echo "Checked";?>><label for="vehicle1">
+                                              <?php echo $row['name']." ".$row['year'] ?></label><br></div>
+                                          <?php
+                                        }
+                                      }
+                                      ?>
+                                    </div>
+
+                                    <div class="d-flex flex-row">
+                                      <button type="submit" class="btn btn-primary">Show Result</button>
+
+
+                                    </div>
+
+                                   </form>
 
                                 </div>
                                 <div class="card-body table-full-width table-responsive">
@@ -138,24 +233,26 @@ else
                                                 <td>1-10</td>
                                               <?php
                                               $sum_one_ten=0;
-                                              $totalEnrolled = "SELECT COUNT(section.enrolled_students) AS sectionCount FROM `section` WHERE enrolled_students>=1 AND enrolled_students<=10 GROUP BY section.school_id;";
-                                              $countArray= $dbconnect->query($totalEnrolled);
-
-                                              if($countArray->num_rows>0)
+                                              for($j=1;$j<=5;$j++)
                                               {
-                                                while($row=$countArray->fetch_assoc())
+                                                $totalEnrolled = "SELECT COUNT(section.enrolled_students) AS sectionCount FROM `section` WHERE enrolled_students>=1 AND enrolled_students<=10 AND school_id=".$j;
+                                                if($semester_ids!="")
                                                 {
-                                                  echo   "<td> ". $row['sectionCount']."</td>";
-                                                $sum_one_ten=$sum_one_ten+$row['sectionCount'];
-
-
-
+                                                  $totalEnrolled=$totalEnrolled." AND semester_id IN (".$semester_ids.");";
+                                                }
+                                                else
+                                                {
+                                                 $totalEnrolled=$totalEnrolled.";";
                                                 }
 
-                                                   echo   "<td> ". $sum_one_ten."</td>";
 
-
+                                                $countArray= $dbconnect->query($totalEnrolled);
+                                                $row=$countArray->fetch_array();
+                                                echo   "<td> ". $row['sectionCount']."</td>";
+                                               $sum_one_ten=$sum_one_ten+$row['sectionCount'];
                                               }
+                                               echo   "<td> ". $sum_one_ten."</td>";
+
 
                                               ?>
                                             </tr>
@@ -165,23 +262,28 @@ else
                                                 <td>11-20</td>
                                                 <?php
                                                 $sum_11_20=0;
-                                                $totalEnrolled = "SELECT COUNT(section.enrolled_students) AS sectionCount FROM `section` WHERE enrolled_students>=11 AND enrolled_students<=20 GROUP BY section.school_id;";
-                                                $countArray= $dbconnect->query($totalEnrolled);
 
-                                                if($countArray->num_rows>0)
+                                                for($j=1;$j<=5;$j++)
                                                 {
-                                                  while($row=$countArray->fetch_assoc())
+                                                  $totalEnrolled = "SELECT COUNT(section.enrolled_students) AS sectionCount FROM `section` WHERE enrolled_students>=11 AND enrolled_students<=20 AND school_id=".$j;
+                                                  if($semester_ids!="")
                                                   {
-                                                    echo   "<td> ". $row['sectionCount']."</td>";
-                                                    $sum_11_20=$sum_11_20+$row['sectionCount'];
-
-
+                                                    $totalEnrolled=$totalEnrolled." AND semester_id IN (".$semester_ids.");";
                                                   }
-                                                  echo  "<td> ". $sum_11_20."</td>";
+                                                  else
+                                                  {
+                                                   $totalEnrolled=$totalEnrolled.";";
+                                                  }
 
 
+                                                  $countArray= $dbconnect->query($totalEnrolled);
+                                                  $row=$countArray->fetch_array();
+                                                  echo   "<td> ". $row['sectionCount']."</td>";
+                                                 $sum_11_20=$sum_11_20+$row['sectionCount'];
                                                 }
-                                                 ?>
+                                                ?>
+                                                 <?php echo   "<td> ". $sum_11_20."</td>" ?>;
+
 
                                             </tr>
                                             <tr>
@@ -190,23 +292,26 @@ else
                                                 <td>21-30</td>
                                                 <?php
                                                 $sum_21_30=0;
-                                                $totalEnrolled = "SELECT COUNT(section.enrolled_students) AS sectionCount FROM `section` WHERE enrolled_students>=21 AND enrolled_students<=30 GROUP BY section.school_id;";
-                                                $countArray= $dbconnect->query($totalEnrolled);
-
-                                                if($countArray->num_rows>0)
+                                                for($j=1;$j<=5;$j++)
                                                 {
-                                                  while($row=$countArray->fetch_assoc())
+                                                  $totalEnrolled = "SELECT COUNT(section.enrolled_students) AS sectionCount FROM `section` WHERE enrolled_students>=21 AND enrolled_students<=30 AND school_id=".$j;
+                                                  if($semester_ids!="")
                                                   {
-                                                    echo   "<td> ". $row['sectionCount']."</td>";
-                                                    $sum_21_30=$sum_21_30+$row['sectionCount'];
-
-
+                                                    $totalEnrolled=$totalEnrolled." AND semester_id IN (".$semester_ids.");";
                                                   }
-                                                  echo "<td>".$sum_21_30."</td>";
+                                                  else
+                                                  {
+                                                   $totalEnrolled=$totalEnrolled.";";
+                                                  }
 
 
+                                                  $countArray= $dbconnect->query($totalEnrolled);
+                                                  $row=$countArray->fetch_array();
+                                                  echo   "<td> ". $row['sectionCount']."</td>";
+                                                 $sum_21_30=$sum_21_30+$row['sectionCount'];
                                                 }
-                                                 ?>
+                                                ?>
+                                                 <?php echo   "<td> ". $sum_21_30."</td>" ?>;
 
                                             </tr>
                                             <tr>
@@ -215,24 +320,26 @@ else
                                                 <td>31-35</td>
                                                 <?php
                                                 $sum_31_35=0;
-                                                $totalEnrolled = "SELECT COUNT(section.enrolled_students) AS sectionCount FROM `section` WHERE enrolled_students>=31 AND enrolled_students<=35 GROUP BY section.school_id;";
-                                                $countArray= $dbconnect->query($totalEnrolled);
-
-                                                if($countArray->num_rows>0)
+                                                for($j=1;$j<=5;$j++)
                                                 {
-                                                  while($row=$countArray->fetch_assoc())
+                                                  $totalEnrolled = "SELECT COUNT(section.enrolled_students) AS sectionCount FROM `section` WHERE enrolled_students>=31 AND enrolled_students<=35 AND school_id=".$j;
+                                                  if($semester_ids!="")
                                                   {
-                                                    echo   "<td> ". $row['sectionCount']."</td>";
-                                                      $sum_31_35=$sum_31_35+$row['sectionCount'];
-
-
+                                                    $totalEnrolled=$totalEnrolled." AND semester_id IN (".$semester_ids.");";
                                                   }
-                                                    echo "<td>".$sum_31_35."</td>";
+                                                  else
+                                                  {
+                                                   $totalEnrolled=$totalEnrolled.";";
+                                                  }
 
 
-
+                                                  $countArray= $dbconnect->query($totalEnrolled);
+                                                  $row=$countArray->fetch_array();
+                                                  echo   "<td> ". $row['sectionCount']."</td>";
+                                                 $sum_31_35=$sum_31_35+$row['sectionCount'];
                                                 }
-                                                 ?>
+                                                ?>
+                                                <?php echo   "<td> ". $sum_31_35."</td>" ?>;
 
                                             </tr>
                                             <tr>
@@ -242,23 +349,26 @@ else
                                                 <?php
                                                 $sum_36_40=0;
 
-                                                $totalEnrolled = "SELECT COUNT(section.enrolled_students) AS sectionCount FROM `section` WHERE enrolled_students>=36 AND enrolled_students<=40 GROUP BY section.school_id;";
-                                                $countArray= $dbconnect->query($totalEnrolled);
-
-                                                if($countArray->num_rows>0)
+                                                for($j=1;$j<=5;$j++)
                                                 {
-                                                  while($row=$countArray->fetch_assoc())
+                                                  $totalEnrolled = "SELECT COUNT(section.enrolled_students) AS sectionCount FROM `section` WHERE enrolled_students>=36 AND enrolled_students<=40 AND school_id=".$j;
+                                                  if($semester_ids!="")
                                                   {
-                                                    echo   "<td> ". $row['sectionCount']."</td>";
-                                                    $sum_36_40=$sum_36_40+$row['sectionCount'];
-
-
+                                                    $totalEnrolled=$totalEnrolled." AND semester_id IN (".$semester_ids.");";
                                                   }
-                                                  echo "<td>".$sum_36_40."</td>";
+                                                  else
+                                                  {
+                                                   $totalEnrolled=$totalEnrolled.";";
+                                                  }
 
+
+                                                  $countArray= $dbconnect->query($totalEnrolled);
+                                                  $row=$countArray->fetch_array();
+                                                  echo   "<td> ". $row['sectionCount']."</td>";
+                                                 $sum_36_40=$sum_36_40+$row['sectionCount'];
                                                 }
                                                 ?>
-
+                                                 <?php echo   "<td> ". $sum_36_40."</td>" ?>;
 
                                             </tr>
                                             <tr>
@@ -266,23 +376,26 @@ else
                                                 <td>41-50</td>
                                                 <?php
                                                 $sum_41_50=0;
-                                                $totalEnrolled = "SELECT COUNT(section.enrolled_students) AS sectionCount FROM `section` WHERE enrolled_students>=41 AND enrolled_students<=50 GROUP BY section.school_id;";
-                                                $countArray= $dbconnect->query($totalEnrolled);
-
-                                                if($countArray->num_rows>0)
+                                                for($j=1;$j<=5;$j++)
                                                 {
-                                                  while($row=$countArray->fetch_assoc())
+                                                  $totalEnrolled = "SELECT COUNT(section.enrolled_students) AS sectionCount FROM `section` WHERE enrolled_students>=41 AND enrolled_students<=50 AND school_id=".$j;
+                                                  if($semester_ids!="")
                                                   {
-                                                    echo   "<td> ". $row['sectionCount']."</td>";
-                                                    $sum_41_50=$sum_41_50+$row['sectionCount'];
-
-
+                                                    $totalEnrolled=$totalEnrolled." AND semester_id IN (".$semester_ids.");";
                                                   }
-                                                  echo "<td>".$sum_41_50."</td>";
+                                                  else
+                                                  {
+                                                   $totalEnrolled=$totalEnrolled.";";
+                                                  }
 
 
+                                                  $countArray= $dbconnect->query($totalEnrolled);
+                                                  $row=$countArray->fetch_array();
+                                                  echo   "<td> ". $row['sectionCount']."</td>";
+                                                 $sum_41_50=$sum_41_50+$row['sectionCount'];
                                                 }
                                                 ?>
+                                                <?php echo   "<td> ". $sum_41_50."</td>" ?>;
 
                                             </tr>
                                             <tr>
@@ -290,25 +403,26 @@ else
                                                 <td>51-55</td>
                                                 <?php
                                                 $sum_51_55=0;
-                                                $totalEnrolled = "SELECT COUNT(section.enrolled_students) AS sectionCount FROM `section` WHERE enrolled_students>=51 AND enrolled_students<=55 GROUP BY section.school_id;";
-                                                $countArray= $dbconnect->query($totalEnrolled);
-
-                                                if($countArray->num_rows>0)
+                                                for($j=1;$j<=5;$j++)
                                                 {
-                                                  while($row=$countArray->fetch_assoc())
+                                                  $totalEnrolled = "SELECT COUNT(section.enrolled_students) AS sectionCount FROM `section` WHERE enrolled_students>=51 AND enrolled_students<=55 AND school_id=".$j;
+                                                  if($semester_ids!="")
                                                   {
-                                                    echo   "<td> ". $row['sectionCount']."</td>";
-                                                    $sum_51_55=$sum_51_55+$row['sectionCount'];
-
-
+                                                    $totalEnrolled=$totalEnrolled." AND semester_id IN (".$semester_ids.");";
                                                   }
-                                                  echo "<td>".$sum_51_55."</td>";
+                                                  else
+                                                  {
+                                                   $totalEnrolled=$totalEnrolled.";";
+                                                  }
 
 
-
-
+                                                  $countArray= $dbconnect->query($totalEnrolled);
+                                                  $row=$countArray->fetch_array();
+                                                  echo   "<td> ". $row['sectionCount']."</td>";
+                                                 $sum_51_55=$sum_51_55+$row['sectionCount'];
                                                 }
-                                                 ?>
+                                                ?>
+                                                 <?php echo   "<td> ". $sum_51_55."</td>" ?>;
 
 
                                             </tr>
@@ -318,34 +432,42 @@ else
 
                                               <?php
                                               $sum_56_60=0;
-                                              $totalEnrolled = "SELECT COUNT(section.enrolled_students) AS sectionCount FROM `section` WHERE enrolled_students>=56 AND enrolled_students<=60 GROUP BY section.school_id;";
-                                              $countArray= $dbconnect->query($totalEnrolled);
-
-                                              if($countArray->num_rows>0)
+                                              for($j=1;$j<=5;$j++)
                                               {
-                                                while($row=$countArray->fetch_assoc())
+                                                $totalEnrolled = "SELECT COUNT(section.enrolled_students) AS sectionCount FROM `section` WHERE enrolled_students>=56 AND enrolled_students<=60 AND school_id=".$j;
+                                                if($semester_ids!="")
                                                 {
-                                                  echo   "<td> ". $row['sectionCount']."</td>";
-                                                  $sum_56_60=$sum_56_60+$row['sectionCount'];
-
-
+                                                  $totalEnrolled=$totalEnrolled." AND semester_id IN (".$semester_ids.");";
                                                 }
-                                                 echo "<td>".$sum_56_60."</td>";
+                                                else
+                                                {
+                                                 $totalEnrolled=$totalEnrolled.";";
+                                                }
 
 
+                                                $countArray= $dbconnect->query($totalEnrolled);
+                                                $row=$countArray->fetch_array();
+                                                echo   "<td> ". $row['sectionCount']."</td>";
+                                               $sum_56_60=$sum_56_60+$row['sectionCount'];
                                               }
-                                               ?>
+                                              ?>
+                                               <?php echo   "<td> ". $sum_56_60."</td>"?>;
                                             </tr>
                                             <tr>
                                               <?php
-                                              $totalEnrolled="SELECT COUNT(section.enrolled_students) AS sectionCount FROM `section` WHERE enrolled_students>=1 AND enrolled_students<=65;";
+                                              $totalEnrolled="SELECT COUNT(section.enrolled_students) AS sectionCount FROM `section` WHERE enrolled_students>=1 AND enrolled_students<=65";
+                                              if($semester_ids!="")
+                                              {
+                                                $totalEnrolled=$totalEnrolled." AND semester_id IN (".$semester_ids.");";
+                                              }
+                                              else
+                                              {
+                                               $totalEnrolled=$totalEnrolled.";";
+                                              }
                                               $countArray=$dbconnect->query($totalEnrolled);
                                               $total=$countArray->fetch_array();
                                               ?>
-                                                <td>Total : </td>
-                                                <td><?php echo $total['sectionCount']; ?></td>
-                                                <td> <?php echo $sum; ?></td>
-                                                  <td> <?php echo $sum2; ?></td>
+                                              
 
                                             </tr>
 
