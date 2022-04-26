@@ -343,6 +343,7 @@ $dataPoints3 = array(
                                                {
                                                 $difference=$difference.";";
                                                }
+
                                                $Enrolled1 = $dbconnect->query($totalEnrolled_SELS);
                                                $Enrolled1_avg = $dbconnect->query($totalEnrolled_avg);
                                                $Enrolled1_avg_room=$dbconnect->query($total_avg_room);

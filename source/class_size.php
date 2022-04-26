@@ -290,8 +290,6 @@ $dataPoints2 = array(
                                              $class_size8 = round($total['sectionCount']/(8*2),1);
                                             $sum2=$sum2+$class_size8;
 
-
-
                                                ?>
                                                 <td>21-30</td>
                                                 <td><?php echo $total['sectionCount']; ?></td>
