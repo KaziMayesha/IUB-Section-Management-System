@@ -71,15 +71,6 @@ if(isset($_GET['semester_6']))
   }
 }
 $dbconnect = $connection->getConnection();
-if ($dbconnect)
-{
-
-}
-else
-  {
-
-  }
-
 
 ?>
 <?php
@@ -129,29 +120,24 @@ $dataPoints2 = array(
                 <ul class="nav">
                     <li class="nav-item active" >
                        <a class="nav-link" href="./class_size.php">
-
                             <p>Classroom Requirements</p>
                         </a>
                     </li>
                     <li >
                         <a class="nav-link" href="./analysisof_sections.php">
-
                             <p>Analysis of Sections</p>
                         </a>
                     </li>
                     <li >
                         <a class="nav-link" href="./departmentWise_analysis.php">
-
                             <p>Department Wise Analysis</p>
                         </a>
                     </li>
                     <li>
                       <a class="nav-link" href="./usage_resources.php">
-
                             <p>Unused Resources </p>
                         </a>
                     </li>
-
                     <li>
                       <a class="nav-link" href="./course_distribution.php">
 
@@ -164,14 +150,11 @@ $dataPoints2 = array(
                             <p>Available Resources</p>
                         </a>
                     </li>
-
                     <li>
                       <a class="nav-link" href="./revenue.php">
-
                             <p>Revenue</p>
                         </a>
                     </li>
-
                 </ul>
             </div>
         </div>
@@ -219,13 +202,8 @@ $dataPoints2 = array(
                                       }
                                       ?>
                                     </div>
-
                                     <div class="d-flex flex-row">
-
                                       <button type="submit" class="btn btn-primary">Show Results</button>
-
-
-
                                     </div>
 
                                    </form>
@@ -238,7 +216,6 @@ $dataPoints2 = array(
                                             <th>Sections</th>
                                             <th>Classroom 7</th>
                                             <th>Classroom 8</th>
-
                                         </thead>
                                         <tbody>
                                             <tr>
@@ -266,7 +243,6 @@ $dataPoints2 = array(
                                                 <td><?php   echo $total['sectionCount']; ?></td>
                                                 <td><?php   echo $class_size7; $a=array("label"=>"1-10", "y"=>$class_size7);array_push($dataPoints,$a);?></td>
                                                 <td><?php   echo $class_size8;$a=array("label"=>"1-10", "y"=>$class_size8);array_push($dataPoints2,$a); ?></td>
-
                                             </tr>
 
                                             <tr>
@@ -288,13 +264,11 @@ $dataPoints2 = array(
 
                                               $class_size8 = round($total['sectionCount']/(8*2),1);
                                               $sum2=$sum2+$class_size8;
-
                                               ?>
                                                 <td>11-20</td>
                                                 <td><?php echo $total['sectionCount']; ?></td>
                                                 <td> <?php echo $class_size7;$a=array("label"=>"11-20", "y"=>$class_size7);array_push($dataPoints,$a); ?> </td>
                                                 <td><?php   echo $class_size8;$a=array("label"=>"11-20", "y"=>$class_size8);array_push($dataPoints2,$a); ?></td>
-
                                             </tr>
                                             <tr>
                                               <?php

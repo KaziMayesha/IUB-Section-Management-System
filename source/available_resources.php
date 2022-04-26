@@ -4,15 +4,6 @@ $connection = new Connection();
 
 $sum_capacity=0;
 $dbconnect = $connection->getConnection();
-if ($dbconnect)
-{
-
-}
-else
-  {
-
-  }
-
 
 ?>
 <!DOCTYPE html>
@@ -146,14 +137,7 @@ else
 
                                               echo "</tr>";
 
-
-
-
                                             }
-
-
-
-
                                           }
 
                                           ?>
@@ -175,9 +159,6 @@ else
 
                                             <th> <?php echo $total_resource['Resource']; ?> </th>
                                             <th>    </th>
-
-
-
                                           </tr>
                                           <tr>
                                             <th> Total Capacity: </th>
