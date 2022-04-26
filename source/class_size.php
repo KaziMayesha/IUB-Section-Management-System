@@ -179,7 +179,7 @@ $dataPoints2 = array(
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg " color-on-scroll="500">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#pablo"> Classroom Requirements </a>
+                    <a class="navbar-brand" href="#pablo"> <b>Classroom Requirements </b></a>
 
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
                         <ul class="nav navbar-nav mr-auto">
@@ -244,7 +244,7 @@ $dataPoints2 = array(
                                             <tr>
                                               <?php
                                               $totalEnrolled = "SELECT COUNT(section.enrolled_students) AS sectionCount FROM `section` WHERE enrolled_students>=1 AND enrolled_students<=10";
-                                              if($semester_ids!="")
+                                              if($semester_ids!="")1,2
                                               {
                                                 $totalEnrolled=$totalEnrolled." AND semester_id IN (".$semester_ids.");";
                                               }
@@ -254,18 +254,18 @@ $dataPoints2 = array(
                                               }
                                               $countArray= $dbconnect->query($totalEnrolled);
                                               $total=$countArray->fetch_array();
-                                              $class_size6 = round($total['sectionCount']/(7*2),1);
+                                              $class_size7 = round($total['sectionCount']/(7*2),1);
 
-                                              $sum=$sum+$class_size6;
-                                              $class_size7 = round($total['sectionCount']/(8*2),1);
+                                              $sum=$sum+$class_size7;
+                                              $class_size8 = round($total['sectionCount']/(8*2),1);
 
-                                              $sum2=$sum2+$class_size7;
+                                              $sum2=$sum2+$class_size8;
 
                                               ?>
                                                 <td>1-10</td>
                                                 <td><?php   echo $total['sectionCount']; ?></td>
-                                                <td><?php   echo $class_size6; $a=array("label"=>"1-10", "y"=>$class_size6);array_push($dataPoints,$a);?></td>
-                                                <td><?php   echo $class_size7;$a=array("label"=>"1-10", "y"=>$class_size7);array_push($dataPoints2,$a); ?></td>
+                                                <td><?php   echo $class_size7; $a=array("label"=>"1-10", "y"=>$class_size7);array_push($dataPoints,$a);?></td>
+                                                <td><?php   echo $class_size8;$a=array("label"=>"1-10", "y"=>$class_size8);array_push($dataPoints2,$a); ?></td>
 
                                             </tr>
 
@@ -282,18 +282,18 @@ $dataPoints2 = array(
                                                }
                                               $countArray=$dbconnect->query($totalEnrolled);
                                               $total=$countArray->fetch_array();
-                                              $class_size6 = round($total['sectionCount']/(7*2),1);
 
-                                              $sum=$sum+$class_size6;
-                                              $class_size7 = round($total['sectionCount']/(8*2),1);
+                                              $class_size7 = round($total['sectionCount']/(7*2),1);
+                                              $sum=$sum+$class_size7;
 
-                                              $sum2=$sum2+$class_size7;
+                                              $class_size8 = round($total['sectionCount']/(8*2),1);
+                                              $sum2=$sum2+$class_size8;
 
                                               ?>
                                                 <td>11-20</td>
                                                 <td><?php echo $total['sectionCount']; ?></td>
-                                                <td> <?php echo $class_size6;$a=array("label"=>"11-20", "y"=>$class_size6);array_push($dataPoints,$a); ?> </td>
-                                                <td><?php   echo $class_size7;$a=array("label"=>"11-20", "y"=>$class_size7);array_push($dataPoints2,$a); ?></td>
+                                                <td> <?php echo $class_size7;$a=array("label"=>"11-20", "y"=>$class_size7);array_push($dataPoints,$a); ?> </td>
+                                                <td><?php   echo $class_size8;$a=array("label"=>"11-20", "y"=>$class_size8);array_push($dataPoints2,$a); ?></td>
 
                                             </tr>
                                             <tr>
@@ -309,18 +309,20 @@ $dataPoints2 = array(
                                               }
                                              $countArray=$dbconnect->query($totalEnrolled);
                                              $total=$countArray->fetch_array();
-                                             $class_size6 = round($total['sectionCount']/(7*2),1);
+                                             $class_size7 = round($total['sectionCount']/(7*2),1);
+                                             $sum=$sum+$class_size7;
 
-                                             $sum=$sum+$class_size6;
-                                             $class_size7 = round($total['sectionCount']/(8*2),1);
 
-                                             $sum2=$sum2+$class_size7;
+                                             $class_size8 = round($total['sectionCount']/(8*2),1);
+                                            $sum2=$sum2+$class_size8;
+
+
 
                                                ?>
                                                 <td>21-30</td>
                                                 <td><?php echo $total['sectionCount']; ?></td>
-                                                <td><?php   echo $class_size6;$a=array("label"=>"21-30", "y"=>$class_size6);array_push($dataPoints,$a); ?></td>
-                                                <td><?php   echo $class_size7;$a=array("label"=>"21-30", "y"=>$class_size7);array_push($dataPoints2,$a); ?></td>
+                                                <td><?php   echo $class_size7;$a=array("label"=>"21-30", "y"=>$class_size7);array_push($dataPoints,$a); ?></td>
+                                                <td><?php   echo $class_size8;$a=array("label"=>"21-30", "y"=>$class_size8);array_push($dataPoints2,$a); ?></td>
 
                                             </tr>
                                             <tr>
@@ -336,17 +338,17 @@ $dataPoints2 = array(
                                               }
                                               $countArray=$dbconnect->query($totalEnrolled);
                                               $total=$countArray->fetch_array();
-                                              $class_size6 = round($total['sectionCount']/(7*2),1);
+                                              $class_size7 = round($total['sectionCount']/(7*2),1);
 
-                                              $sum=$sum+$class_size6;
-                                              $class_size7 = round($total['sectionCount']/(8*2),1);
+                                              $sum=$sum+$class_size7;
+                                              $class_size8 = round($total['sectionCount']/(8*2),1);
 
-                                              $sum2=$sum2+$class_size7;
+                                              $sum2=$sum2+$class_size8;
                                               ?>
                                                 <td>31-35</td>
                                                 <td><?php echo $total['sectionCount']; ?></td>
-                                                <td><?php   echo $class_size6;$a=array("label"=>"31-35", "y"=>$class_size6);array_push($dataPoints,$a); ?></td>
-                                                <td><?php   echo $class_size7;$a=array("label"=>"31-35", "y"=>$class_size7);array_push($dataPoints2,$a); ?></td>
+                                                <td><?php   echo $class_size7;$a=array("label"=>"31-35", "y"=>$class_size7);array_push($dataPoints,$a); ?></td>
+                                                <td><?php   echo $class_size8;$a=array("label"=>"31-35", "y"=>$class_size8);array_push($dataPoints2,$a); ?></td>
 
                                             </tr>
                                             <tr>
@@ -362,17 +364,17 @@ $dataPoints2 = array(
                                               }
                                               $countArray=$dbconnect->query($totalEnrolled);
                                               $total=$countArray->fetch_array();
-                                              $class_size6 = round($total['sectionCount']/(7*2),1);
+                                              $class_size7 = round($total['sectionCount']/(7*2),1);
 
-                                              $sum=$sum+$class_size6;
-                                              $class_size7 = round($total['sectionCount']/(8*2),1);
+                                              $sum=$sum+$class_size7;
+                                              $class_size8 = round($total['sectionCount']/(8*2),1);
 
-                                              $sum2=$sum2+$class_size7;
+                                              $sum2=$sum2+$class_size8;
                                               ?>
                                                 <td>36-40</td>
                                                 <td><?php echo $total['sectionCount']; ?></td>
-                                                <td><?php   echo $class_size6;$a=array("label"=>"36-40", "y"=>$class_size6);array_push($dataPoints,$a); ?></td>
-                                                <td><?php   echo $class_size7;$a=array("label"=>"36-40", "y"=>$class_size7);array_push($dataPoints2,$a); ?></td>
+                                                <td><?php   echo $class_size7;$a=array("label"=>"36-40", "y"=>$class_size7);array_push($dataPoints,$a); ?></td>
+                                                <td><?php   echo $class_size8;$a=array("label"=>"36-40", "y"=>$class_size8);array_push($dataPoints2,$a); ?></td>
 
                                             </tr>
                                             <tr>
@@ -388,17 +390,17 @@ $dataPoints2 = array(
                                               }
                                               $countArray=$dbconnect->query($totalEnrolled);
                                               $total=$countArray->fetch_array();
-                                              $class_size6 = round($total['sectionCount']/(7*2),1);
+                                              $class_size7 = round($total['sectionCount']/(7*2),1);
 
-                                              $sum=$sum+$class_size6;
-                                              $class_size7 = round($total['sectionCount']/(8*2),1);
+                                              $sum=$sum+$class_size7;
+                                              $class_size8 = round($total['sectionCount']/(8*2),1);
 
-                                              $sum2=$sum2+$class_size7;
+                                              $sum2=$sum2+$class_size8;
                                               ?>
                                                 <td>41-50</td>
                                                 <td><?php echo $total['sectionCount']; ?></td>
-                                                <td><?php  echo $class_size6;$a=array("label"=>"41-50", "y"=>$class_size6);array_push($dataPoints,$a); ?></td>
-                                                <td><?php   echo $class_size7; $a=array("label"=>"41-50", "y"=>$class_size7);array_push($dataPoints2,$a);?></td>
+                                                <td><?php  echo $class_size7;$a=array("label"=>"41-50", "y"=>$class_size7);array_push($dataPoints,$a); ?></td>
+                                                <td><?php   echo $class_size8; $a=array("label"=>"41-50", "y"=>$class_size8);array_push($dataPoints2,$a);?></td>
 
                                             </tr>
                                             <tr>
@@ -424,7 +426,7 @@ $dataPoints2 = array(
                                                 <td>51-55</td>
                                                 <td><?php echo $total['sectionCount']; ?></td>
                                                 <td><?php echo $class_size7;$a=array("label"=>"51-55", "y"=>$class_size7);array_push($dataPoints,$a); ?></td>
-                                                <td><?php   echo $class_size8;$a=array("label"=>"51-55", "y"=>$class_size7);array_push($dataPoints2,$a); ?></td>
+                                                <td><?php   echo $class_size8;$a=array("label"=>"51-55", "y"=>$class_size8);array_push($dataPoints2,$a); ?></td>
 
                                             </tr>
                                             <tr>
@@ -440,17 +442,17 @@ $dataPoints2 = array(
                                               }
                                               $countArray=$dbconnect->query($totalEnrolled);
                                               $total=$countArray->fetch_array();
-                                              $class_size6 = round($total['sectionCount']/(7*2),1);
+                                              $class_size7 = round($total['sectionCount']/(7*2),1);
 
-                                              $sum=$sum+$class_size6;
-                                              $class_size7 = round($total['sectionCount']/(8*2),1);
+                                              $sum=$sum+$class_size7;
+                                              $class_size8 = round($total['sectionCount']/(8*2),1);
 
-                                              $sum2=$sum2+$class_size7;
+                                              $sum2=$sum2+$class_size8;
                                               ?>
                                                 <td>56-65</td>
                                                 <td><?php echo $total['sectionCount']; ?></td>
-                                                <td><?php   echo $class_size6;$a=array("label"=>"56-65", "y"=>$class_size6);array_push($dataPoints,$a); ?></td>
-                                                <td><?php   echo $class_size7;$a=array("label"=>"56-65", "y"=>$class_size7);array_push($dataPoints2,$a); ?></td>
+                                                <td><?php   echo $class_size7;$a=array("label"=>"56-65", "y"=>$class_size7);array_push($dataPoints,$a); ?></td>
+                                                <td><?php   echo $class_size8;$a=array("label"=>"56-65", "y"=>$class_size8);array_push($dataPoints2,$a); ?></td>
 
                                             </tr>
                                             <tr>
@@ -485,7 +487,7 @@ $dataPoints2 = array(
                               var chart = new CanvasJS.Chart("chartContainer", {
                                 animationEnabled: true,
                                 title: {
-                                  text: "Class Size 7 Requirements"
+                                  text: "Slot 7 Requirements"
                                 },
 
                                 data: [{
@@ -499,7 +501,7 @@ $dataPoints2 = array(
                               var chart2 = new CanvasJS.Chart("chartContainer2", {
                                 animationEnabled: true,
                                 title: {
-                                  text: "Class Size 8 Requirements"
+                                  text: "Slot 8 Requirements"
                                 },
 
                                 data: [{

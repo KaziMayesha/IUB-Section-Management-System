@@ -84,6 +84,27 @@ else
 
 
 ?>
+<?php
+
+$dataPoints = array(
+
+)
+
+?>
+<?php
+
+$dataPoints2 = array(
+
+)
+
+?>
+<?php
+
+$dataPoints3 = array(
+
+)
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -284,9 +305,9 @@ else
                                                 <td>SBE</td>
                                                 <td><?php   echo $total['enrollment_count']; ?></td>
                                                 <td> <?php   echo round($total_avg['Average'],2); ?></td>
-                                                <td> <?php   echo round($total_avg_room['AverageRoom'],2); ?></td>
-                                               <td> <?php  echo round($difference['Diff'],2); ?></td>
-                                               <td> <?php  echo round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,2);?></td>
+                                                <td> <?php   echo round($total_avg_room['AverageRoom'],2);$a=array("label"=>"Average_room", "y"=>round($total_avg_room['AverageRoom'],2));array_push($dataPoints,$a);?></td>
+                                                <td> <?php  echo round($difference['Diff'],2);$a=array("label"=>"Difference", "y"=>round($difference['Diff'],2));array_push($dataPoints2,$a); ?></td>
+                                                <td> <?php  echo round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,2);$a=array("label"=>"Unused", "y"=>round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,2));array_push($dataPoints3,$a);?></td>
 
 
 
@@ -351,10 +372,9 @@ else
                                                 <td>SELS</td>
                                                 <td><?php   echo $total['enrollment_count']; ?></td>
                                                 <td> <?php   echo round($total_avg['Average'],2); ?></td>
-                                                <td> <?php   echo round($total_avg_room['AverageRoom'],2); ?></td>
-                                                <td> <?php  echo round($difference['Diff'],2); ?></td>
-                                                <td> <?php  echo round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,2);?></td>
-
+                                                <td> <?php   echo round($total_avg_room['AverageRoom'],2);$a=array("label"=>"Average_room", "y"=>round($total_avg_room['AverageRoom'],2));array_push($dataPoints,$a);?></td>
+                                                <td> <?php  echo round($difference['Diff'],2);$a=array("label"=>"Difference", "y"=>round($difference['Diff'],2));array_push($dataPoints2,$a); ?></td>
+                                                <td> <?php  echo round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,2);$a=array("label"=>"Unused", "y"=>round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,2));array_push($dataPoints3,$a);?></td>
 
 
                                             </tr>
@@ -411,9 +431,9 @@ else
                                                 <td>SETS</td>
                                                 <td><?php   echo $total['enrollment_count']; ?></td>
                                                 <td> <?php   echo round($total_avg['Average'],2); ?></td>
-                                                <td> <?php   echo round($total_avg_room['AverageRoom'],2); ?></td>
-                                                <td> <?php  echo round($difference['Diff'],2); ?></td>
-                                                <td> <?php  echo round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,2);?></td>
+                                                <td> <?php   echo round($total_avg_room['AverageRoom'],2);$a=array("label"=>"Average_room", "y"=>round($total_avg_room['AverageRoom'],2));array_push($dataPoints,$a);?></td>
+                                                <td> <?php  echo round($difference['Diff'],2);$a=array("label"=>"Difference", "y"=>round($difference['Diff'],2));array_push($dataPoints2,$a); ?></td>
+                                                <td> <?php  echo round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,2);$a=array("label"=>"Unused", "y"=>round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,2));array_push($dataPoints3,$a);?></td>
 
                                             </tr>
                                             <tr>
@@ -470,9 +490,9 @@ else
                                                 <td>SLASS</td>
                                                 <td><?php   echo $total['enrollment_count']; ?></td>
                                                 <td> <?php   echo round($total_avg['Average'],2); ?></td>
-                                                <td> <?php   echo round($total_avg_room['AverageRoom'],2); ?></td>
-                                                <td> <?php  echo round($difference['Diff'],2); ?></td>
-                                                <td> <?php  echo round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,2);?></td>
+                                                <td> <?php   echo round($total_avg_room['AverageRoom'],2);$a=array("label"=>"Average_room", "y"=>round($total_avg_room['AverageRoom'],2));array_push($dataPoints,$a);?></td>
+                                                <td> <?php  echo round($difference['Diff'],2);$a=array("label"=>"Difference", "y"=>round($difference['Diff'],2));array_push($dataPoints2,$a); ?></td>
+                                                <td> <?php  echo round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,2);$a=array("label"=>"Unused", "y"=>round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,2));array_push($dataPoints3,$a);?></td>
                                             </tr>
                                             <tr>
                                               <?php
@@ -527,10 +547,10 @@ else
                                               ?>
                                                 <td>SPPH</td>
                                                 <td><?php   echo $total['enrollment_count']; ?></td>
-                                                <td> <?php   echo round($total_avg['Average'],2); ?></td>
-                                                <td> <?php   echo round($total_avg_room['AverageRoom'],2); ?></td>
-                                                <td> <?php  echo round($difference['Diff'],2); ?></td>
-                                                <td> <?php  echo round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,2);?></td>
+                                                <td> <?php   echo round($total_avg['Average'],2);?></td>
+                                                <td> <?php   echo round($total_avg_room['AverageRoom'],2);$a=array("label"=>"Average_room", "y"=>round($total_avg_room['AverageRoom'],2));array_push($dataPoints,$a);?></td>
+                                                <td> <?php  echo round($difference['Diff'],2);$a=array("label"=>"Difference", "y"=>round($difference['Diff'],2));array_push($dataPoints2,$a); ?></td>
+                                                <td> <?php  echo round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,2);$a=array("label"=>"Unused", "y"=>round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,2));array_push($dataPoints3,$a);?></td>
 
                                             </tr>
 
@@ -538,6 +558,67 @@ else
 
                                         </tbody>
                                     </table>
+                                </div>
+                                <div class="card-header ">
+                                  <script>
+                              window.onload = function() {
+
+
+                              var chart = new CanvasJS.Chart("chartContainer", {
+                                animationEnabled: true,
+                                title: {
+                                  text: "Average Room"
+                                },
+
+                                data: [{
+                                  type: "column",
+                                  yValueFormatString: "#,##0.00\"\"",
+                                  indexLabel: "{label} ({y})",
+                                  dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+                                }]
+                              });
+                              chart.render();
+                              var chart2 = new CanvasJS.Chart("chartContainer2", {
+                                animationEnabled: true,
+                                title: {
+                                  text: "Difference"
+                                },
+
+                                data: [{
+                                  type: "column",
+                                  yValueFormatString:"#,##0.00\"\"",
+                                  indexLabel: "{label} ({y})",
+                                  dataPoints: <?php echo json_encode($dataPoints2, JSON_NUMERIC_CHECK); ?>
+                                }]
+                              });
+                              chart2.render();
+                              var chart3 = new CanvasJS.Chart("chartContainer3", {
+                                animationEnabled: true,
+                                title: {
+                                  text: "Unused Resources"
+                                },
+
+                                data: [{
+                                  type: "column",
+                                  yValueFormatString: "#,##0.00\"\"",
+                                  indexLabel: "{label} ({y})",
+                                  dataPoints: <?php echo json_encode($dataPoints3, JSON_NUMERIC_CHECK); ?>
+                                }]
+                              });
+                              chart3.render();
+
+
+                              }
+                              </script>
+                                  <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+                                  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+                                  <div id="chartContainer2" style="height: 370px; width: 100%;"></div>
+                                  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+                                  <div id="chartContainer3" style="height: 370px; width: 100%;"></div>
+                                  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
                                 </div>
                             </div>
                         </div>

@@ -348,11 +348,7 @@ $dataPoints = array(
 
                                               ?>
                                               <td><?php   echo $total['section_count'];$total_section+=$total['section_count'];$SPPH_Student_count+= $total['section_count']; ?></td>
-                                                <td><?php   echo $total_section;$grand_total+=$total_section ?></td>
-
-
-
-
+                                              <td><?php   echo $total_section;$grand_total+=$total_section ?></td>
                                             </tr>
 
                                             <?php
