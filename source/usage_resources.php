@@ -293,10 +293,10 @@ $dataPoints3 = array(
                                               ?>
                                                 <td>SBE</td>
                                                 <td><?php   echo $total['enrollment_count']; ?></td>
-                                                <td> <?php   echo round($total_avg['Average'],2); ?></td>
-                                                <td> <?php   echo round($total_avg_room['AverageRoom'],2);$a=array("label"=>"Average_room", "y"=>round($total_avg_room['AverageRoom'],2));array_push($dataPoints,$a);?></td>
-                                                <td> <?php  echo round($difference['Diff'],2);$a=array("label"=>"Difference", "y"=>round($difference['Diff'],2));array_push($dataPoints2,$a); ?></td>
-                                                <td> <?php  echo round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,2);$a=array("label"=>"Unused", "y"=>round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,2));array_push($dataPoints3,$a);?></td>
+                                                <td> <?php   echo round($total_avg['Average'],1); ?></td>
+                                                <td> <?php   echo round($total_avg_room['AverageRoom'],1);$a=array("label"=>"Average_room", "y"=>round($total_avg_room['AverageRoom'],2));array_push($dataPoints,$a);?></td>
+                                                <td> <?php  echo round($difference['Diff'],1);$a=array("label"=>"Difference", "y"=>round($difference['Diff'],2));array_push($dataPoints2,$a); ?></td>
+                                                <td> <?php  echo round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,1);$a=array("label"=>"Unused", "y"=>round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,2));array_push($dataPoints3,$a);?></td>
 
 
 
@@ -358,10 +358,10 @@ $dataPoints3 = array(
                                               ?>
                                                 <td>SELS</td>
                                                 <td><?php   echo $total['enrollment_count']; ?></td>
-                                                <td> <?php   echo round($total_avg['Average'],2); ?></td>
-                                                <td> <?php   echo round($total_avg_room['AverageRoom'],2);$a=array("label"=>"Average_room", "y"=>round($total_avg_room['AverageRoom'],2));array_push($dataPoints,$a);?></td>
+                                                <td> <?php   echo round($total_avg['Average'],1); ?></td>
+                                                <td> <?php   echo round($total_avg_room['AverageRoom'],1);$a=array("label"=>"Average_room", "y"=>round($total_avg_room['AverageRoom'],2));array_push($dataPoints,$a);?></td>
                                                 <td> <?php  echo round($difference['Diff'],2);$a=array("label"=>"Difference", "y"=>round($difference['Diff'],2));array_push($dataPoints2,$a); ?></td>
-                                                <td> <?php  echo round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,2);$a=array("label"=>"Unused", "y"=>round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,2));array_push($dataPoints3,$a);?></td>
+                                                <td> <?php  echo round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,1);$a=array("label"=>"Unused", "y"=>round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,2));array_push($dataPoints3,$a);?></td>
 
 
                                             </tr>
@@ -520,7 +520,6 @@ $dataPoints3 = array(
                                                $difference=$difference.";";
                                               }
 
-
                                               $Enrolled1 = $dbconnect->query($totalEnrolled_SPPH);
                                               $Enrolled1_avg = $dbconnect->query($totalEnrolled_avg);
                                               $Enrolled1_avg_room=$dbconnect->query($total_avg_room);
@@ -538,11 +537,7 @@ $dataPoints3 = array(
                                                 <td> <?php   echo round($total_avg_room['AverageRoom'],2);$a=array("label"=>"Average_room", "y"=>round($total_avg_room['AverageRoom'],2));array_push($dataPoints,$a);?></td>
                                                 <td> <?php  echo round($difference['Diff'],2);$a=array("label"=>"Difference", "y"=>round($difference['Diff'],2));array_push($dataPoints2,$a); ?></td>
                                                 <td> <?php  echo round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,2);$a=array("label"=>"Unused", "y"=>round(($difference['Diff']/$total_avg_room['AverageRoom'])*100,2));array_push($dataPoints3,$a);?></td>
-
                                             </tr>
-
-
-
                                         </tbody>
                                     </table>
                                 </div>

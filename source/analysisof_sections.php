@@ -259,8 +259,6 @@ $dataPoints = array(
                                             <th>SPPH</th>
                                             <th>Total</th>
 
-
-
                                         </thead>
                                         <tbody>
                                           <?php
@@ -364,7 +362,6 @@ $dataPoints = array(
                                             <td><?php echo $SPPH_Student_count;$a=array("label"=>"SPPH", "y"=>$SPPH_Student_count);array_push($dataPoints,$a);  ?> </td>
                                             <td><?php echo $grand_total; ?> </td>
 
-
                                             </tr>
                                         </tbody>
                                     </table>
@@ -379,7 +376,6 @@ $dataPoints = array(
                                 title: {
                                   text: "Analysis of Sections"
                                 },
-
                                 data: [{
                                   type: "column",
                                   yValueFormatString: "#,##0\"\"",
@@ -388,8 +384,6 @@ $dataPoints = array(
                                 }]
                               });
                               chart.render();
-
-
                               }
                               </script>
                                   <div id="chartContainer" style="height: 370px; width: 100%;"></div>

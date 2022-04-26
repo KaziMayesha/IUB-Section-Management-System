@@ -196,7 +196,6 @@ else
                                         {
                                           ?>
 
-
                                             <div class="p-2"><input type="checkbox" name=<?php echo "semester_".$row['id'] ?> value=<?php echo $row['id'] ?> <?php if(isset($_GET['semester_'.$row['id']])) echo "Checked";?>><label for="vehicle1">
                                               <?php echo $row['name']." ".$row['year'] ?></label><br></div>
                                           <?php
@@ -207,8 +206,6 @@ else
 
                                     <div class="d-flex flex-row">
                                       <button type="submit" class="btn btn-primary">Show Result</button>
-
-
                                     </div>
 
                                    </form>
@@ -244,20 +241,16 @@ else
                                                  $totalEnrolled=$totalEnrolled.";";
                                                 }
 
-
                                                 $countArray= $dbconnect->query($totalEnrolled);
                                                 $row=$countArray->fetch_array();
                                                 echo   "<td> ". $row['sectionCount']."</td>";
                                                $sum_one_ten=$sum_one_ten+$row['sectionCount'];
                                               }
                                                echo   "<td> ". $sum_one_ten."</td>";
-
-
                                               ?>
                                             </tr>
 
                                             <tr>
-
                                                 <td>11-20</td>
                                                 <?php
                                                 $sum_11_20=0;
@@ -273,8 +266,6 @@ else
                                                   {
                                                    $totalEnrolled=$totalEnrolled.";";
                                                   }
-
-
                                                   $countArray= $dbconnect->query($totalEnrolled);
                                                   $row=$countArray->fetch_array();
                                                   echo   "<td> ". $row['sectionCount']."</td>";
@@ -282,12 +273,8 @@ else
                                                 }
                                                 ?>
                                                  <?php echo   "<td> ". $sum_11_20."</td>" ?>;
-
-
                                             </tr>
                                             <tr>
-
-
                                                 <td>21-30</td>
                                                 <?php
                                                 $sum_21_30=0;
