@@ -166,13 +166,8 @@ $dataPoints2 = array(
 
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
                         <ul class="nav navbar-nav mr-auto">
-
-
-
                         </ul>
                         <ul class="navbar-nav ml-auto">
-
-
                         </ul>
                     </div>
                 </div>
@@ -187,6 +182,7 @@ $dataPoints2 = array(
                                   <form  action="./class_size.php">
                                     <div class="d-flex flex-row">
                                       <?php
+
                                       $classroom_info = "SELECT * FROM semester;";
                                       $countArray= $dbconnect->query($classroom_info);
                                       if($countArray->num_rows>0)
@@ -221,7 +217,7 @@ $dataPoints2 = array(
                                             <tr>
                                               <?php
                                               $totalEnrolled = "SELECT COUNT(section.enrolled_students) AS sectionCount FROM `section` WHERE enrolled_students>=1 AND enrolled_students<=10";
-                                              if($semester_ids!="")1,2
+                                              if($semester_ids!="")
                                               {
                                                 $totalEnrolled=$totalEnrolled." AND semester_id IN (".$semester_ids.");";
                                               }
@@ -398,7 +394,6 @@ $dataPoints2 = array(
                                                 <td><?php echo $total['sectionCount']; ?></td>
                                                 <td><?php echo $class_size7;$a=array("label"=>"51-55", "y"=>$class_size7);array_push($dataPoints,$a); ?></td>
                                                 <td><?php   echo $class_size8;$a=array("label"=>"51-55", "y"=>$class_size8);array_push($dataPoints2,$a); ?></td>
-
                                             </tr>
                                             <tr>
                                               <?php
@@ -443,7 +438,7 @@ $dataPoints2 = array(
                                                 <td>Total : </td>
                                                 <td><?php echo $total['sectionCount']; ?></td>
                                                 <td> <?php echo $sum; ?></td>
-                                                  <td> <?php echo $sum2; ?></td>
+                                                <td> <?php echo $sum2; ?></td>
 
                                             </tr>
 

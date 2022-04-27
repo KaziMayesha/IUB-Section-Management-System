@@ -337,7 +337,7 @@ $dataPoints = array(
 
                                 data: [{
                                   type: "column",
-                                  yValueFormatString: "#,##0\"\"",
+                                  yValueFormatString: "#,##0.00\"\"",
                                   indexLabel: "{label} ({y})",
                                   dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
                                 }]
